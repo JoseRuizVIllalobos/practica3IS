@@ -7,10 +7,12 @@
 /home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/rebuild_cache.dir
 /home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/edit_cache.dir
 /home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/test.dir
-/home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/actividad-main.dir
 /home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/actividad.dir
 /home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/rebuild_cache.dir
 /home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/edit_cache.dir
 /home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/test.dir
-/home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/estadisticas-main.dir
 /home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/estadisticas.dir
+/home/jose/Escritorio/IS/build/src/director/CMakeFiles/rebuild_cache.dir
+/home/jose/Escritorio/IS/build/src/director/CMakeFiles/edit_cache.dir
+/home/jose/Escritorio/IS/build/src/director/CMakeFiles/test.dir
+/home/jose/Escritorio/IS/build/src/director/CMakeFiles/director_academico.dir

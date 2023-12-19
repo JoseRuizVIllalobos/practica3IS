@@ -122,21 +122,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/actividad/CMakeFiles/actividad-main.dir/rule:
-	cd /home/jose/Escritorio/IS/build && $(MAKE) -f CMakeFiles/Makefile2 src/actividad/CMakeFiles/actividad-main.dir/rule
-.PHONY : src/actividad/CMakeFiles/actividad-main.dir/rule
-
-# Convenience name for target.
-actividad-main: src/actividad/CMakeFiles/actividad-main.dir/rule
-
-.PHONY : actividad-main
-
-# fast build rule for target.
-actividad-main/fast:
-	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/actividad/CMakeFiles/actividad-main.dir/build.make src/actividad/CMakeFiles/actividad-main.dir/build
-.PHONY : actividad-main/fast
-
-# Convenience name for target.
 src/actividad/CMakeFiles/actividad.dir/rule:
 	cd /home/jose/Escritorio/IS/build && $(MAKE) -f CMakeFiles/Makefile2 src/actividad/CMakeFiles/actividad.dir/rule
 .PHONY : src/actividad/CMakeFiles/actividad.dir/rule
@@ -150,33 +135,6 @@ actividad: src/actividad/CMakeFiles/actividad.dir/rule
 actividad/fast:
 	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/actividad/CMakeFiles/actividad.dir/build.make src/actividad/CMakeFiles/actividad.dir/build
 .PHONY : actividad/fast
-
-actividad-main.o: actividad-main.cc.o
-
-.PHONY : actividad-main.o
-
-# target to build an object file
-actividad-main.cc.o:
-	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/actividad/CMakeFiles/actividad-main.dir/build.make src/actividad/CMakeFiles/actividad-main.dir/actividad-main.cc.o
-.PHONY : actividad-main.cc.o
-
-actividad-main.i: actividad-main.cc.i
-
-.PHONY : actividad-main.i
-
-# target to preprocess a source file
-actividad-main.cc.i:
-	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/actividad/CMakeFiles/actividad-main.dir/build.make src/actividad/CMakeFiles/actividad-main.dir/actividad-main.cc.i
-.PHONY : actividad-main.cc.i
-
-actividad-main.s: actividad-main.cc.s
-
-.PHONY : actividad-main.s
-
-# target to generate assembly for a file
-actividad-main.cc.s:
-	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/actividad/CMakeFiles/actividad-main.dir/build.make src/actividad/CMakeFiles/actividad-main.dir/actividad-main.cc.s
-.PHONY : actividad-main.cc.s
 
 actividad.o: actividad.cc.o
 
@@ -214,11 +172,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... actividad-main"
 	@echo "... actividad"
-	@echo "... actividad-main.o"
-	@echo "... actividad-main.i"
-	@echo "... actividad-main.s"
 	@echo "... actividad.o"
 	@echo "... actividad.i"
 	@echo "... actividad.s"

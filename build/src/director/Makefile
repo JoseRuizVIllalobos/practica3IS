@@ -91,14 +91,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles /home/jose/Escritorio/IS/build/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/jose/Escritorio/IS/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles /home/jose/Escritorio/IS/build/src/director/CMakeFiles/progress.marks
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f CMakeFiles/Makefile2 src/director/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f CMakeFiles/Makefile2 src/director/clean
 .PHONY : clean
 
 # The main clean target
@@ -108,57 +108,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f CMakeFiles/Makefile2 src/director/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f CMakeFiles/Makefile2 src/director/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/jose/Escritorio/IS/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named actividad
+# Convenience name for target.
+src/director/CMakeFiles/director_academico.dir/rule:
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f CMakeFiles/Makefile2 src/director/CMakeFiles/director_academico.dir/rule
+.PHONY : src/director/CMakeFiles/director_academico.dir/rule
 
-# Build rule for target.
-actividad: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 actividad
-.PHONY : actividad
+# Convenience name for target.
+director_academico: src/director/CMakeFiles/director_academico.dir/rule
 
-# fast build rule for target.
-actividad/fast:
-	$(MAKE) -f src/actividad/CMakeFiles/actividad.dir/build.make src/actividad/CMakeFiles/actividad.dir/build
-.PHONY : actividad/fast
-
-#=============================================================================
-# Target rules for targets named estadisticas
-
-# Build rule for target.
-estadisticas: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 estadisticas
-.PHONY : estadisticas
-
-# fast build rule for target.
-estadisticas/fast:
-	$(MAKE) -f src/estadisticas/CMakeFiles/estadisticas.dir/build.make src/estadisticas/CMakeFiles/estadisticas.dir/build
-.PHONY : estadisticas/fast
-
-#=============================================================================
-# Target rules for targets named director_academico
-
-# Build rule for target.
-director_academico: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 director_academico
 .PHONY : director_academico
 
 # fast build rule for target.
 director_academico/fast:
-	$(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/build
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/build
 .PHONY : director_academico/fast
+
+director_academico.o: director_academico.cc.o
+
+.PHONY : director_academico.o
+
+# target to build an object file
+director_academico.cc.o:
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/director_academico.cc.o
+.PHONY : director_academico.cc.o
+
+director_academico.i: director_academico.cc.i
+
+.PHONY : director_academico.i
+
+# target to preprocess a source file
+director_academico.cc.i:
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/director_academico.cc.i
+.PHONY : director_academico.cc.i
+
+director_academico.s: director_academico.cc.s
+
+.PHONY : director_academico.s
+
+# target to generate assembly for a file
+director_academico.cc.s:
+	cd /home/jose/Escritorio/IS/build && $(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/director_academico.cc.s
+.PHONY : director_academico.cc.s
 
 # Help Target
 help:
@@ -169,9 +172,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... actividad"
-	@echo "... estadisticas"
 	@echo "... director_academico"
+	@echo "... director_academico.o"
+	@echo "... director_academico.i"
+	@echo "... director_academico.s"
 .PHONY : help
 
 
@@ -183,6 +187,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/jose/Escritorio/IS/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

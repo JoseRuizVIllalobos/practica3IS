@@ -13,6 +13,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
   "../src/CMakeLists.txt"
   "../src/actividad/CMakeLists.txt"
+  "../src/director/CMakeLists.txt"
   "../src/estadisticas/CMakeLists.txt"
   "/usr/share/cmake-3.16/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
@@ -47,12 +48,12 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/actividad/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/estadisticas/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/director/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "src/actividad/CMakeFiles/actividad-main.dir/DependInfo.cmake"
   "src/actividad/CMakeFiles/actividad.dir/DependInfo.cmake"
-  "src/estadisticas/CMakeFiles/estadisticas-main.dir/DependInfo.cmake"
   "src/estadisticas/CMakeFiles/estadisticas.dir/DependInfo.cmake"
+  "src/director/CMakeFiles/director_academico.dir/DependInfo.cmake"
   )

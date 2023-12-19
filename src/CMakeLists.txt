@@ -1,0 +1,3 @@
+add_subdirectory(actividad)
+add_subdirectory(estadisticas)
+add_subdirectory(director)

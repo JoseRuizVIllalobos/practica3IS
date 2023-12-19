@@ -1,0 +1,3 @@
+add_library(director_academico director_academico.cc director_academico.h)
+target_link_libraries(director_academico PUBLIC acividad)
+ target_include_directories(director_academico PUBLIC ${CMAKE_CURRENT_LIST_DIR})

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jose/Escritorio/IS/src/actividad/actividad-main.cc
+actividad.h
+/home/jose/Escritorio/IS/src/actividad/actividad.h
+
+/home/jose/Escritorio/IS/src/actividad/actividad.h
+stdio.h
+-
+iostream
+-
+string
+-
+list
+-
+

@@ -101,6 +101,10 @@
                     return id_;
                 }
 
+                std::string getNombre(){
+                    return nombre_;
+                }
+
                 std::string getTitulo(){
                     return titulo_;
                 }
@@ -133,7 +137,7 @@
                     return precio_entrada_;
                 }
 
-                int FechaInicio(){
+                int getFechaInicio(){
                     return fecha_inicio_;
                 }
 
@@ -144,21 +148,6 @@
                 int getDuracion(){
                     return duracion_minutos_;
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     };
 
 #endif

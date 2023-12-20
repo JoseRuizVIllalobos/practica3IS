@@ -31,16 +31,22 @@
             }
 
             int getPorcentajeAsistencia(){
-                int porcent=(asistencia_/numero_inscripciones_)*100;
+                float porcent=0;
+                porcent=(asistencia_/numero_inscripciones_)*100;
                 return porcent;
             }
 
-            int getRecaudacionTotal(Actividad a){
-                return (numero_inscripciones_+a.getPrecio());
+            int getRecaudacionTotal(){
+                return recaudacion_;
             }
 
-            
+            int getInscripciones(){
+                return numero_inscripciones_;
+            }
 
+            int getAsistencia(){
+                return asistencia_;
+            }
 
     };
 

@@ -22,6 +22,7 @@ private:
 	tm *_fecha_registro = nullptr;
 	string _sexo = "";
 	string _correo = "";
+	string _tipo = "";
 
 public:
 
@@ -94,6 +95,10 @@ public:
 		return _correo;
 	}
 
+	inline string tipo() const {
+		return _tipo;
+	}
+
 	/*-------------- SETTERS ----------------------------*/
 
 	// Establece el username del usuario
@@ -154,16 +159,40 @@ public:
 		_fecha_nacimiento->tm_year = anio;
 	}
 
+	inline void set_nacimiento(const string &fecha){
+		if(_fecha_nacimiento == nullptr)
+			_fecha_nacimiento = new tm;
+
+		strptime(fecha.c_str(), "%F %T", _fecha_nacimiento);
+
+	}
+
+	inline void set_registro(const string &fecha){
+		if(_fecha_registro == nullptr)
+			_fecha_registro= new tm;
+
+		strptime(fecha.c_str(), "%F %T", _fecha_registro);
+	}
+
 	// Establece el sexo del usuario
-	inline void set_sexo(string &sexo){
-		std::transform(sexo.begin(), sexo.end(), sexo.begin(), [](unsigned char c) { return std::tolower(c);});
-		_sexo = sexo;
+	inline void set_sexo(const string &sexo){
+		string sex(sexo);
+		std::transform(sex.begin(), sex.end(), sex.begin(), [](unsigned char c) { return std::tolower(c);});
+		_sexo = sex;
 	}
 
 	inline void set_sexo(const char *sexo){
 		// Convertimos el const char* a string
 		string sex(sexo);
 		set_sexo(sex);
+	}
+
+	inline void set_correo(const string &correo) {
+		_correo = correo;
+	}
+
+	inline void set_tipo(const string &tipo) {
+		_tipo = tipo;
 	}
 
 	// Destructor de la clase

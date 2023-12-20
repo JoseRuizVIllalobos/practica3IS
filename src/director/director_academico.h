@@ -8,7 +8,7 @@ class DirectorAcademico{
         void modificarInfoActividad(Actividad a){
                 //HACER UN SWITCH CASE PARA PREGUNTAR QUE HAY QUE MODIFICAR
             std::string nombre,ubicacion, tematica, descripcion,ponente;
-            int fecha_inicio,fecha_fin,duracion, selec_po, n_ponentes, eleccion,aforo;
+            int fecha_inicio,fecha_fin,duracion, selec_po, n_ponentes, eleccion,aforo,status;
             float precio;
 
 
@@ -24,6 +24,7 @@ class DirectorAcademico{
             std::cout<<"8.Duracion:"<<std::endl;
             std::cout<<"9.Precio"<<std::endl;
             std::cout<<"10.Aforo"<<std::endl;
+            std::cout<<"11.Estado"<<std::endl;
 
             std::cin>>eleccion;
             switch (eleccion)
@@ -105,9 +106,34 @@ class DirectorAcademico{
                     std::cin>>aforo;    
                     a.setAforo(aforo);
                 break;
+                case 11:
+                    std::cout<<"Introduzca el nuevo estado de la actividad:"<<std::endl;
+                    std::cout<<"1. Pendiente"<<std::endl;
+                    std::cout<<"2. Pasada"<<std::endl;
+                    std::cout<<"3. Cancelada"<<std::endl;
+                    std::cin>>status;
+                    switch (status)
+                    {
+                    case 1:
+                        a.setEstado(ActividadStatus::Pendiente);
+                        break;
+                    case 2: 
+                        a.setEstado(ActividadStatus::Pasada);
+                    break;
+                    case 3:
+                        a.setEstado(ActividadStatus::Cancelada);
+                    break;
+                        
+                    default:
+                        std::cout<<"ERROR"<<std::endl;
+                    }
+
+
+
                 default:
                     std::cout<<"ERROR!"<<std::endl;
-
+                break;
+                
             }
                 
 

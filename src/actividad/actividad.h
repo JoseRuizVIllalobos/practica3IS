@@ -4,6 +4,15 @@
     #include <iostream>
     #include <string>
     #include <list>
+    
+    enum class ActividadStatus{
+        Pendiente,
+        Pasada,
+        Cancelada
+    };
+    
+    
+    
     class Actividad{
 
         private:
@@ -19,9 +28,10 @@
             std::string titulo_;
             float precio_entrada_;
             std::list<std::string> ponentes_;
+            ActividadStatus estado_;
         public:
             //CONSTRUCTOR:
-            Actividad(int id, int fecha_fin, int fecha_inicio, int duracion_minutos, int aforo, std::string nombre, std::string tematica, std::string descripcion, std::string ubicacion, std::string titulo, float precio_entrada){
+            Actividad(int id, int fecha_fin, int fecha_inicio, int duracion_minutos, int aforo, std::string nombre, std::string tematica, std::string descripcion, std::string ubicacion, std::string titulo, float precio_entrada, ActividadStatus estado){
                 id_=id;
                 fecha_fin_=fecha_fin;
                 fecha_inicio_=fecha_inicio;
@@ -33,6 +43,7 @@
                 titulo_=titulo;
                 precio_entrada_=precio_entrada;
                 nombre_=nombre;
+                estado_=estado;
             }
             //SETTERS:
 
@@ -91,9 +102,9 @@
                         }
                     }
                      
-
-
-
+                }
+                void setEstado(ActividadStatus e){
+                    estado_=e;
                 }
             //GETTERS:
 
@@ -147,6 +158,9 @@
 
                 int getDuracion(){
                     return duracion_minutos_;
+                }
+                ActividadStatus getEstado(){
+                    return estado_;
                 }
     };
 

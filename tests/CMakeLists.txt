@@ -22,3 +22,10 @@ add_executable(actividad-test actividad-test.cc)
 target_link_libraries(actividad-test
   PRIVATE GTest::GTest actividad)
 add_test(actividad_gtests actividad-test)
+
+# Testing director library
+add_executable(director-test director-test.cc)
+target_link_libraries(director-test
+  PRIVATE GTest::GTest director_academico)
+add_test(director_gtests director-test)
+

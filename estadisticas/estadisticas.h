@@ -31,16 +31,26 @@
             }
 
             int getPorcentajeAsistencia(){
-                int porcent=(asistencia_/numero_inscripciones_)*100;
+                float porcent=0;
+                porcent=(asistencia_/numero_inscripciones_)*100;
                 return porcent;
             }
 
-            int getRecaudacionTotal(Actividad a){
-                return (numero_inscripciones_+a.getPrecio());
+            int getRecaudacionTotal(){
+                return recaudacion_;
             }
 
-            
+            int getInscripciones(){
+                return numero_inscripciones_;
+            }
 
+            int getAsistencia(){
+                return asistencia_;
+            }
+
+            std::string getEstadisticas(Actividad a){
+                return std::string("Estadisticas de: ") + a.getNombre() + "\n" + "Inscripciones: " + std::to_string(numero_inscripciones_) + "Asistencia: " + std::to_string(asistencia_) + "Recaudación: " + std::to_string(recaudacion_);  
+            }
 
     };
 

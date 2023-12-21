@@ -1,6 +1,0 @@
-/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles/rebuild_cache.dir
-/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles/edit_cache.dir
-/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles/gestor.dir
-/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/include/CMakeFiles/rebuild_cache.dir
-/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/include/CMakeFiles/edit_cache.dir
-/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/include/CMakeFiles/mainlib.dir

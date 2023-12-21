@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jose/Escritorio/IS
+CMAKE_SOURCE_DIR = "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jose/Escritorio/IS/build
+CMAKE_BINARY_DIR = "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,22 +78,11 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles /home/jose/Escritorio/IS/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles" "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -122,43 +111,57 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named actividad
+# Target rules for targets named gestor
 
 # Build rule for target.
-actividad: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 actividad
-.PHONY : actividad
+gestor: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gestor
+.PHONY : gestor
 
 # fast build rule for target.
-actividad/fast:
-	$(MAKE) -f src/actividad/CMakeFiles/actividad.dir/build.make src/actividad/CMakeFiles/actividad.dir/build
-.PHONY : actividad/fast
+gestor/fast:
+	$(MAKE) -f CMakeFiles/gestor.dir/build.make CMakeFiles/gestor.dir/build
+.PHONY : gestor/fast
 
 #=============================================================================
-# Target rules for targets named estadisticas
+# Target rules for targets named mainlib
 
 # Build rule for target.
-estadisticas: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 estadisticas
-.PHONY : estadisticas
+mainlib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mainlib
+.PHONY : mainlib
 
 # fast build rule for target.
-estadisticas/fast:
-	$(MAKE) -f src/estadisticas/CMakeFiles/estadisticas.dir/build.make src/estadisticas/CMakeFiles/estadisticas.dir/build
-.PHONY : estadisticas/fast
+mainlib/fast:
+	$(MAKE) -f include/CMakeFiles/mainlib.dir/build.make include/CMakeFiles/mainlib.dir/build
+.PHONY : mainlib/fast
 
-#=============================================================================
-# Target rules for targets named director_academico
+src/main.o: src/main.cpp.o
 
-# Build rule for target.
-director_academico: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 director_academico
-.PHONY : director_academico
+.PHONY : src/main.o
 
-# fast build rule for target.
-director_academico/fast:
-	$(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/build
-.PHONY : director_academico/fast
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/gestor.dir/build.make CMakeFiles/gestor.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/gestor.dir/build.make CMakeFiles/gestor.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/gestor.dir/build.make CMakeFiles/gestor.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -168,10 +171,11 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... actividad"
-	@echo "... estadisticas"
-	@echo "... director_academico"
+	@echo "... gestor"
+	@echo "... mainlib"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

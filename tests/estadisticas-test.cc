@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
-#include "actividad.h"
-#include "estadisticas.h"
+#include <actividad.hpp>
+#include <estadisticas.hpp>
 
 // Test case for Estadisticas class
 TEST(EstadisticasTest, EstadisticasTest1) {
     // Crear una actividad para utilizar en las pruebas
-    Actividad actividad(1, 20231231, 20230101, 60, 100, "Nombre", "Tematica", "Descripcion", "Ubicacion", "Titulo", 10.0, ActividadStatus::Pendiente);
+    Actividad actividad(1, 20231231, 20230101, 60, 100, "Nombre", "Tematica", "Descripcion", "Ubicacion", "Titulo", 10.0, ActividadStatus::PENDIENTE);
     
     Estadisticas estadisticas(50, 30, 500.0, 4.5);
 

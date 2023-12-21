@@ -1,4 +1,4 @@
-# Install script for directory: /home/jose/Escritorio/IS
+# Install script for directory: /home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,9 +38,8 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("/home/jose/Escritorio/IS/build/src/cmake_install.cmake")
-
+  # Include the install script for the subdirectory.
+  include("/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/include/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -51,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/jose/Escritorio/IS/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

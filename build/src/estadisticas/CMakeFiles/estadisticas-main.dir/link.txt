@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/estadisticas-main.dir/estadisticas-main.cc.o  -o estadisticas-main  libestadisticas.a -lacividad 

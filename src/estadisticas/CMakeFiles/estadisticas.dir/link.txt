@@ -1,2 +1,0 @@
-/usr/bin/ar qc libestadisticas.a  CMakeFiles/estadisticas.dir/estadisticas.cc.o
-/usr/bin/ranlib libestadisticas.a

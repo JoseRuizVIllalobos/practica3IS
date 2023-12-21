@@ -1,18 +1,6 @@
-/home/jose/Escritorio/IS/build/CMakeFiles/rebuild_cache.dir
-/home/jose/Escritorio/IS/build/CMakeFiles/edit_cache.dir
-/home/jose/Escritorio/IS/build/CMakeFiles/test.dir
-/home/jose/Escritorio/IS/build/src/CMakeFiles/rebuild_cache.dir
-/home/jose/Escritorio/IS/build/src/CMakeFiles/edit_cache.dir
-/home/jose/Escritorio/IS/build/src/CMakeFiles/test.dir
-/home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/rebuild_cache.dir
-/home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/edit_cache.dir
-/home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/test.dir
-/home/jose/Escritorio/IS/build/src/actividad/CMakeFiles/actividad.dir
-/home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/rebuild_cache.dir
-/home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/edit_cache.dir
-/home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/test.dir
-/home/jose/Escritorio/IS/build/src/estadisticas/CMakeFiles/estadisticas.dir
-/home/jose/Escritorio/IS/build/src/director/CMakeFiles/rebuild_cache.dir
-/home/jose/Escritorio/IS/build/src/director/CMakeFiles/edit_cache.dir
-/home/jose/Escritorio/IS/build/src/director/CMakeFiles/test.dir
-/home/jose/Escritorio/IS/build/src/director/CMakeFiles/director_academico.dir
+/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles/rebuild_cache.dir
+/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles/edit_cache.dir
+/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles/gestor.dir
+/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/include/CMakeFiles/rebuild_cache.dir
+/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/include/CMakeFiles/edit_cache.dir
+/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/include/CMakeFiles/mainlib.dir

@@ -3,6 +3,7 @@
 #include <appexceptions.hpp>
 #include <usuarioregistrado.hpp>
 #include <certificadoasistencia.hpp>
+#include <actividad.hpp>
 
 // Para conectar con la base de datos local
 #include <mysql/jdbc.h>
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
 	try {
 		string usuario, pass;
 		UsuarioRegistrado user;
+		Actividad actividad;
 
 		sql::Driver *driver = get_driver_instance();
 		sql::Connection *con = driver->connect(servidor, username, password);

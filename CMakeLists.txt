@@ -1,9 +1,20 @@
-cmake_minimum_required(VERSION 3.10)
-project(IS)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-# Enables testing with add_test() for this project
-enable_testing()
-# Adding subdirs
-add_subdirectory(src)
-add_subdirectory(tests)
+cmake_minimum_required(VERSION 3.16)
+
+project(ProyectoGestionEventos)
+
+add_subdirectory(include)
+
+add_executable(gestor src/main.cpp)
+
+# Librerías MySQL
+add_library(mysql SHARED IMPORTED)
+set_target_properties( mysql PROPERTIES IMPORTED_LOCATION 
+	${CMAKE_SOURCE_DIR}/lib64/libmysqlcppconn.so
+)
+
+target_link_libraries(gestor
+	mainlib
+	mysql
+)
+	
+set_target_properties(gestor PROPERTIES LINKER_LANGUAGE CXX)

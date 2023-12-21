@@ -44,187 +44,102 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jose/Escritorio/IS
+CMAKE_SOURCE_DIR = "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jose/Escritorio/IS/build
+CMAKE_BINARY_DIR = "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build"
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: src/all
+all: CMakeFiles/gestor.dir/all
+all: include/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: src/preinstall
+preinstall: include/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: src/clean
+clean: CMakeFiles/gestor.dir/clean
+clean: include/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory src
+# Directory level rules for directory include
 
 # Recursive "all" directory target.
-src/all: src/actividad/all
-src/all: src/estadisticas/all
-src/all: src/director/all
+include/all: include/CMakeFiles/mainlib.dir/all
 
-.PHONY : src/all
+.PHONY : include/all
 
 # Recursive "preinstall" directory target.
-src/preinstall: src/actividad/preinstall
-src/preinstall: src/estadisticas/preinstall
-src/preinstall: src/director/preinstall
+include/preinstall:
 
-.PHONY : src/preinstall
+.PHONY : include/preinstall
 
 # Recursive "clean" directory target.
-src/clean: src/actividad/clean
-src/clean: src/estadisticas/clean
-src/clean: src/director/clean
+include/clean: include/CMakeFiles/mainlib.dir/clean
 
-.PHONY : src/clean
+.PHONY : include/clean
 
 #=============================================================================
-# Directory level rules for directory src/actividad
-
-# Recursive "all" directory target.
-src/actividad/all: src/actividad/CMakeFiles/actividad.dir/all
-
-.PHONY : src/actividad/all
-
-# Recursive "preinstall" directory target.
-src/actividad/preinstall:
-
-.PHONY : src/actividad/preinstall
-
-# Recursive "clean" directory target.
-src/actividad/clean: src/actividad/CMakeFiles/actividad.dir/clean
-
-.PHONY : src/actividad/clean
-
-#=============================================================================
-# Directory level rules for directory src/director
-
-# Recursive "all" directory target.
-src/director/all: src/director/CMakeFiles/director_academico.dir/all
-
-.PHONY : src/director/all
-
-# Recursive "preinstall" directory target.
-src/director/preinstall:
-
-.PHONY : src/director/preinstall
-
-# Recursive "clean" directory target.
-src/director/clean: src/director/CMakeFiles/director_academico.dir/clean
-
-.PHONY : src/director/clean
-
-#=============================================================================
-# Directory level rules for directory src/estadisticas
-
-# Recursive "all" directory target.
-src/estadisticas/all: src/estadisticas/CMakeFiles/estadisticas.dir/all
-
-.PHONY : src/estadisticas/all
-
-# Recursive "preinstall" directory target.
-src/estadisticas/preinstall:
-
-.PHONY : src/estadisticas/preinstall
-
-# Recursive "clean" directory target.
-src/estadisticas/clean: src/estadisticas/CMakeFiles/estadisticas.dir/clean
-
-.PHONY : src/estadisticas/clean
-
-#=============================================================================
-# Target rules for target src/actividad/CMakeFiles/actividad.dir
+# Target rules for target CMakeFiles/gestor.dir
 
 # All Build rule for target.
-src/actividad/CMakeFiles/actividad.dir/all:
-	$(MAKE) -f src/actividad/CMakeFiles/actividad.dir/build.make src/actividad/CMakeFiles/actividad.dir/depend
-	$(MAKE) -f src/actividad/CMakeFiles/actividad.dir/build.make src/actividad/CMakeFiles/actividad.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jose/Escritorio/IS/build/CMakeFiles --progress-num=1,2 "Built target actividad"
-.PHONY : src/actividad/CMakeFiles/actividad.dir/all
+CMakeFiles/gestor.dir/all: include/CMakeFiles/mainlib.dir/all
+	$(MAKE) -f CMakeFiles/gestor.dir/build.make CMakeFiles/gestor.dir/depend
+	$(MAKE) -f CMakeFiles/gestor.dir/build.make CMakeFiles/gestor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles" --progress-num=1,2 "Built target gestor"
+.PHONY : CMakeFiles/gestor.dir/all
 
 # Build rule for subdir invocation for target.
-src/actividad/CMakeFiles/actividad.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 src/actividad/CMakeFiles/actividad.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles 0
-.PHONY : src/actividad/CMakeFiles/actividad.dir/rule
+CMakeFiles/gestor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles" 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gestor.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles" 0
+.PHONY : CMakeFiles/gestor.dir/rule
 
 # Convenience name for target.
-actividad: src/actividad/CMakeFiles/actividad.dir/rule
+gestor: CMakeFiles/gestor.dir/rule
 
-.PHONY : actividad
+.PHONY : gestor
 
 # clean rule for target.
-src/actividad/CMakeFiles/actividad.dir/clean:
-	$(MAKE) -f src/actividad/CMakeFiles/actividad.dir/build.make src/actividad/CMakeFiles/actividad.dir/clean
-.PHONY : src/actividad/CMakeFiles/actividad.dir/clean
+CMakeFiles/gestor.dir/clean:
+	$(MAKE) -f CMakeFiles/gestor.dir/build.make CMakeFiles/gestor.dir/clean
+.PHONY : CMakeFiles/gestor.dir/clean
 
 #=============================================================================
-# Target rules for target src/estadisticas/CMakeFiles/estadisticas.dir
+# Target rules for target include/CMakeFiles/mainlib.dir
 
 # All Build rule for target.
-src/estadisticas/CMakeFiles/estadisticas.dir/all:
-	$(MAKE) -f src/estadisticas/CMakeFiles/estadisticas.dir/build.make src/estadisticas/CMakeFiles/estadisticas.dir/depend
-	$(MAKE) -f src/estadisticas/CMakeFiles/estadisticas.dir/build.make src/estadisticas/CMakeFiles/estadisticas.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jose/Escritorio/IS/build/CMakeFiles --progress-num=5,6 "Built target estadisticas"
-.PHONY : src/estadisticas/CMakeFiles/estadisticas.dir/all
+include/CMakeFiles/mainlib.dir/all:
+	$(MAKE) -f include/CMakeFiles/mainlib.dir/build.make include/CMakeFiles/mainlib.dir/depend
+	$(MAKE) -f include/CMakeFiles/mainlib.dir/build.make include/CMakeFiles/mainlib.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles" --progress-num=3 "Built target mainlib"
+.PHONY : include/CMakeFiles/mainlib.dir/all
 
 # Build rule for subdir invocation for target.
-src/estadisticas/CMakeFiles/estadisticas.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 src/estadisticas/CMakeFiles/estadisticas.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles 0
-.PHONY : src/estadisticas/CMakeFiles/estadisticas.dir/rule
+include/CMakeFiles/mainlib.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles" 1
+	$(MAKE) -f CMakeFiles/Makefile2 include/CMakeFiles/mainlib.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/javier/Documentos/CURSO 2023-2024/IS/PROYECTO 2023/practica3IS/build/CMakeFiles" 0
+.PHONY : include/CMakeFiles/mainlib.dir/rule
 
 # Convenience name for target.
-estadisticas: src/estadisticas/CMakeFiles/estadisticas.dir/rule
+mainlib: include/CMakeFiles/mainlib.dir/rule
 
-.PHONY : estadisticas
-
-# clean rule for target.
-src/estadisticas/CMakeFiles/estadisticas.dir/clean:
-	$(MAKE) -f src/estadisticas/CMakeFiles/estadisticas.dir/build.make src/estadisticas/CMakeFiles/estadisticas.dir/clean
-.PHONY : src/estadisticas/CMakeFiles/estadisticas.dir/clean
-
-#=============================================================================
-# Target rules for target src/director/CMakeFiles/director_academico.dir
-
-# All Build rule for target.
-src/director/CMakeFiles/director_academico.dir/all:
-	$(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/depend
-	$(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jose/Escritorio/IS/build/CMakeFiles --progress-num=3,4 "Built target director_academico"
-.PHONY : src/director/CMakeFiles/director_academico.dir/all
-
-# Build rule for subdir invocation for target.
-src/director/CMakeFiles/director_academico.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 src/director/CMakeFiles/director_academico.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jose/Escritorio/IS/build/CMakeFiles 0
-.PHONY : src/director/CMakeFiles/director_academico.dir/rule
-
-# Convenience name for target.
-director_academico: src/director/CMakeFiles/director_academico.dir/rule
-
-.PHONY : director_academico
+.PHONY : mainlib
 
 # clean rule for target.
-src/director/CMakeFiles/director_academico.dir/clean:
-	$(MAKE) -f src/director/CMakeFiles/director_academico.dir/build.make src/director/CMakeFiles/director_academico.dir/clean
-.PHONY : src/director/CMakeFiles/director_academico.dir/clean
+include/CMakeFiles/mainlib.dir/clean:
+	$(MAKE) -f include/CMakeFiles/mainlib.dir/build.make include/CMakeFiles/mainlib.dir/clean
+.PHONY : include/CMakeFiles/mainlib.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

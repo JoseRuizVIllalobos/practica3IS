@@ -78,65 +78,176 @@ int main(int argc, char *argv[])
 			cout << "\n\t¡Bienvenido " + user.nombre_completo() << "!" << endl;
 		}
 		else
-			throw AppException("Usuario no existe");
+			throw AppException("No se encuentra un usuario registrado con esas credenciales");
 
-		switch(user.tipo()[0]) {
-			case 'u':
-				cout << "USUARIO" << endl;
-				break;
+		// Mostramos menús
+		char opcion[10];
+		do{
 
-			case 'o':
-				char opcion[10];
+			switch(user.tipo()[0]) {
+				// Menú para los usuarios registrados
+				case 'u':
+				{
+					cout << "\n\n\t---------------------------------------" << endl;
+					cout << "\t\t\tMENU" << endl;
+					cout << "\t---------------------------------------" << endl;
+					cout << "\n\t1. Consultar preinscripciones" << endl;
+					cout << "\t0. Salir" << endl;
 
-				cout << "\n\t\tMENU" << endl;
-				cout << "\t1. Crear actividad" << endl;
-				cout << "\t0. Salir" << endl;
+					cout << "\n\n\t¿Qué desea hacer?: ";
+					std::cin >> opcion;
 
-				cout << "\n\n\t¿Qué desea hacer?: ";
-				std::cin >> opcion;
+					switch(opcion[0]){
+						case '1':
+						{
+							uint16_t cont;
+							sql::Statement *query;
+							query = con->createStatement();//	1		2			3			4		5			6			7			8		9
+							res = query->executeQuery("SELECT titulo, descripcion, tematica, ubicacion, aforo, fecha_inicio, fecha_fin, duracion, precio FROM ACTIVIDAD WHERE estado = 'activa'");
 
-				switch(opcion[0]){
-					case '1':
-					{
-						string director;
-						bool exito;
+							for(cont = 0; res->next(); cont++){
+								cout << "\n\t\tPRÓXIMOS EVENTOS\n" << endl
+									 << ((res->getString(1) == "")? "N/A" : res->getString(1)) << endl		// Mostramos título
+									 <<	((res->getString(2) == "")? "N/A" : res->getString(2)) << endl		// Mostramos descripción
+									 << "\nTendrá lugar en " + ((res->getString(4) == "")? "N/A" : res->getString(4))
+									 << ", Aforo: " << res->getInt(5) << endl
+									 << "Fecha de inicio: " << ((res->getString(6) == "")? "N/A" : res->getString(6)) << endl
+									 << "Fecha de clausura: " << ((res->getString(7) == "")? "N/A" : res->getString(7)) << endl
+									 << "Duración: " << res->getInt(8) << " minutos" << endl
+									 << "Precio: " << ((res->getDouble(9) == 0)? "gratuíto" : std::to_string(res->getDouble(9))) << endl;
+							}
 
-						cout << "\n\tIntroduce el nombre de usuario del director: ";
-						std::cin >> director;
-
-						//TODO: comprobar que el director está registrado y que su tipo de usuario es igual a 'director'
-
-						pst = con->prepareStatement("INSERT INTO ACTIVIDAD(director) VALUES(?)");
-						pst->setString(1, director);
-						exito = pst->executeUpdate();
-
-						if(exito)
-							cout << "\n¡Actividad creada con éxito!" << endl;
-						else
-							throw AppException("Error al crear una nueva actividad");
+							if(cont == 0)
+								cout << "\n\tNo hay actividades/eventos que mostrar" << endl;
+						}
+						break;
+						default:
+							cout << "\nLa opción escogida no es válida" << endl;
 					}
-					break;
-
-					default:
-						cout << "\nLa opción escogida no es válida" << endl;
 				}
 				break;
 
-			case 'd':
-				cout << "DIRECTOR" << endl;
+				// Menú para los organizadores
+				case 'o':
+				{
+					cout << "\n\n\t---------------------------------------" << endl;
+					cout << "\t\t\tMENU" << endl;
+					cout << "\t---------------------------------------" << endl;
+					cout << "\n\t1. Crear actividad" << endl;
+					cout << "\t0. Salir" << endl;
+
+					cout << "\n\n\t¿Qué desea hacer?: ";
+					std::cin >> opcion;
+
+					switch(opcion[0]){
+						case '1':
+						{
+							string director;
+							bool exito;
+
+							cout << "\n\tIntroduce el nombre de usuario del director: ";
+							std::cin >> director;
+
+							//TODO: comprobar que el director está registrado y que su tipo de usuario es igual a 'director'
+
+							pst = con->prepareStatement("INSERT INTO ACTIVIDAD(director) VALUES(?)");
+							pst->setString(1, director);
+							exito = pst->executeUpdate();
+
+							if(exito)
+								cout << "\n¡Actividad creada con éxito!" << endl;
+							else
+								throw AppException("Error al crear una nueva actividad");
+
+							delete pst;
+						}
+						break;
+
+						case '0':
+							cout << "\nHa escogido salir";
+
+						default:
+							cerr << "\nLa opción escogida no es válida" << endl;
+					}
+				}
 				break;
-		}
+
+				case 'd':
+				{
+					cout << "\n\n\t---------------------------------------" << endl;
+					cout << "\t\t\tMENU" << endl;
+					cout << "\t---------------------------------------" << endl;
+					cout << "\n\t1. Consulta tus actividades/eventos" << endl;
+					cout << "\t2. Modifica/rellena una actividad/evento" << endl;
+					cout << "\t0. Salir" << endl;
+
+					cout << "\n\n\t¿Qué desea hacer?: ";
+					std::cin >> opcion;
+
+					switch(opcion[0]){
+						// Consultar eventos asignados
+						case '1':
+						{
+							uint16_t cont;
+							//										1		2			3			4		5			6			7			8		9	  10		11
+							pst = con->prepareStatement("SELECT titulo, descripcion, tematica, ubicacion, aforo, fecha_inicio, fecha_fin, duracion, precio, estado, id_actividad FROM ACTIVIDAD WHERE director = ?");
+							pst->setString(1, user.username());
+							res = pst->executeQuery();
+
+							for(cont = 0; res->next(); cont++){
+								cout << "\n\t\tEVENTOS ASIGNADOS\n" << endl
+									 << "IDENTIFICADOR: " << res->getInt(11) << endl
+									 << ((res->getString(1) == "")? "N/A" : res->getString(1)) << endl		// Mostramos título
+									 <<	((res->getString(2) == "")? "N/A" : res->getString(2)) << endl		// Mostramos descripción
+									 << "\nTendrá lugar en " + ((res->getString(4) == "")? "N/A" : res->getString(4))
+									 << ", Aforo: " << res->getInt(5) << endl
+									 << "Fecha de inicio: " << ((res->getString(6) == "")? "N/A" : res->getString(6)) << endl
+									 << "Fecha de clausura: " << ((res->getString(7) == "")? "N/A" : res->getString(7)) << endl
+									 << "Duración: " << res->getInt(8) << " minutos" << endl
+									 << "Precio: " << ((res->getDouble(9) == 0)? "gratuíto" : std::to_string(res->getDouble(9))) << endl
+									 << "Estado/visibilidad: " << res->getString(10);
+							}
+
+							if(cont == 0)
+								cout << "\n\tNo hay actividades/eventos que mostrar" << endl;
+						}
+						break;
+
+						// Modificar eventos
+						case '2':
+						{
+							string id;
+
+							cout << "\n\nIntroduce el identificador del evento a modificar: ";
+							std::cin >> id;
+
+
+						}
+						break;
+
+						case '0':
+							cout << "\nHa escogido salir";
+
+						default:
+							cerr << "\nLa opción escogida no es válida" << endl;
+					}
+				}
+				break;
+			}
+		}while(opcion[0] != '0');
 
 	}
+	// Atrapamos excepciones propias
 	catch(AppException &e) {
 		cerr << e.what() << endl;
 	}
+	// Atrapamos excepciones de SQL
 	catch(sql::SQLException & e){
-		cout << "# ERR: SQLException in " << __FILE__;
-		cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
-		cout << "# ERR: " << e.what();
-		cout << " (MySQL error code: " << e.getErrorCode();
-		cout << ", SQLState: " << e.getSQLState() << " )" << endl;
+		cerr << "# ERR: SQLException in " << __FILE__;
+		cerr << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
+		cerr << "# ERR: " << e.what();
+		cerr << " (MySQL error code: " << e.getErrorCode();
+		cerr << ", SQLState: " << e.getSQLState() << " )" << endl;
 	}
 
 	return 0;

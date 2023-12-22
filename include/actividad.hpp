@@ -1,5 +1,6 @@
 #ifndef ACTIVIDAD_H
 #define ACTIVIDAD_H
+
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -7,7 +8,7 @@
 
 using std::string;
 
-enum class ActividadStatus{
+enum ActividadStatus{
 	PENDIENTE,
 	PASADA,
 	CANCELADA
@@ -17,44 +18,33 @@ class Actividad{
 
 	private:
 		int id_ = 0;
-		tm *fecha_inicio_ = nullptr; //no se que tipo de dato es date, lo he puesto con ints
+		string titulo_;
+		string descripcion_;
+		string ubicacion_;
+		string tematica_;
+		tm *fecha_inicio_ = nullptr;
 		tm *fecha_fin_ = nullptr;
 		int duracion_minutos_ = -1;
 		int aforo_ = -1;
-		std::string nombre_;
-		std::string tematica_;
-		std::string descripcion_;
-		std::string ubicacion_;
-		std::string titulo_;
 		float precio_entrada_ = 0;
 		std::list<std::string> ponentes_;
-		ActividadStatus estado_;
+		ActividadStatus estado_ = PENDIENTE;
+		string director_;
 	public:
 		//CONSTRUCTORES:
-		Actividad():estado_(ActividadStatus::PENDIENTE){};
+		Actividad(){};
 
-		Actividad(int id, int fecha_fin, int fecha_inicio, int duracion_minutos, int aforo, std::string nombre, std::string tematica, std::string descripcion, std::string ubicacion, std::string titulo, float precio_entrada, ActividadStatus estado){
-			id_=id;
-			//fecha_fin_=fecha_fin;
-			//fecha_inicio_=fecha_inicio;
-			duracion_minutos_=duracion_minutos;
-			aforo_=aforo;
-			tematica_=tematica;
-			descripcion_=descripcion;
-			ubicacion_=ubicacion;
-			titulo_=titulo;
-			precio_entrada_=precio_entrada;
-			nombre_=nombre;
-			estado_=estado;
-		}
+		Actividad(int id, string titulo, string descripcion, string ubicacion, string tematica, int duracion_minutos, int aforo, float precio_entrada, ActividadStatus estado, string director)
+		:id_(id), titulo_(titulo), descripcion_(descripcion), ubicacion_(ubicacion), tematica_(tematica), duracion_minutos_(duracion_minutos), aforo_(aforo), precio_entrada_(precio_entrada), estado_(estado), director_(director)
+		{};
+
+
 		//SETTERS:
 
 			void setID(int i){
 				id_=i;
 			}
-			void setNombre(std::string s){
-				nombre_=s;
-			}
+
 			void setTitulo(std::string s1){
 				titulo_=s1;
 			}
@@ -110,14 +100,15 @@ class Actividad{
 			void setEstado(ActividadStatus e){
 				estado_=e;
 			}
+
+			void setDirector(std::string d) {
+				director_ = d;
+			}
+
 		//GETTERS:
 
 			int getID(){
 				return id_;
-			}
-
-			std::string getNombre(){
-				return nombre_;
 			}
 
 			std::string getTitulo(){
@@ -175,22 +166,28 @@ class Actividad{
 				return estado_;
 			}
 
+			string getDirector() {
+				return director_;
+			}
+
 			std::string getDatos(){
 				std::string estadostring;
 				switch (estado_)
 				{
-				case ActividadStatus::PENDIENTE:
+				case PENDIENTE:
 					estadostring="Pendiente";
 					break;
-				case ActividadStatus::PASADA:
+
+				case PASADA:
 					estadostring="Pasada";
 					break;
-				case ActividadStatus::CANCELADA:
+
+				case CANCELADA:
 					estadostring="Cancelada";
 					break;
 				}
 
-				return std::string("Actividad: \n")+ nombre_ + "\n" + "Estado: " + estadostring + "Aforo: " + std::to_string(aforo_) + "Precio: " +  std::to_string(precio_entrada_) + "Fecha inicio: " + getFechaInicio() + "Fecha final: " + getFechaFin() + "Titulo: " + titulo_ + "Descripcion: " + descripcion_ + "Ubicacion: " + ubicacion_;
+				return std::string("Actividad: \n") + "Estado: " + estadostring + "Aforo: " + std::to_string(aforo_) + "Precio: " +  std::to_string(precio_entrada_) + "Fecha inicio: " + getFechaInicio() + "Fecha final: " + getFechaFin() + "Titulo: " + titulo_ + "Descripcion: " + descripcion_ + "Ubicacion: " + ubicacion_;
 			}
 };
 

@@ -49,7 +49,7 @@
             }
 
             std::string getEstadisticas(Actividad a){
-                return std::string("Estadisticas de: ") + a.getNombre() + "\n" + "Inscripciones: " + std::to_string(numero_inscripciones_) + "Asistencia: " + std::to_string(asistencia_) + "Recaudación: " + std::to_string(recaudacion_);  
+                return std::string("Estadisticas de: ") + a.getTitulo() + "\n" + "Inscripciones: " + std::to_string(numero_inscripciones_) + "Asistencia: " + std::to_string(asistencia_) + "Recaudación: " + std::to_string(recaudacion_);
             }
 
     };

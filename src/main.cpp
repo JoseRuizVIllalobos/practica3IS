@@ -4,6 +4,7 @@
 #include <usuarioregistrado.hpp>
 #include <certificadoasistencia.hpp>
 #include <actividad.hpp>
+#include <director.hpp>
 
 // Para conectar con la base de datos local
 #include <mysql/jdbc.h>
@@ -48,8 +49,6 @@ int main(int argc, char *argv[])
 		con->setSchema("eventos_gestion");
 
 		// Si no salta ninguna excepción, la conexión se habra creado con exito
-		cout << "\nCONEXION CREADA CON EXITO" << endl;
-
 		cout << "Intruduce tu usuario: ";
 		std::cin >> usuario;
 
@@ -75,6 +74,8 @@ int main(int argc, char *argv[])
 			user.set_correo(res->getString(8));
 			user.set_tipo(res->getString(9));
 
+			delete res;
+
 			cout << "\n\t¡Bienvenido " + user.nombre_completo() << "!" << endl;
 		}
 		else
@@ -91,7 +92,8 @@ int main(int argc, char *argv[])
 					cout << "\n\n\t---------------------------------------" << endl;
 					cout << "\t\t\tMENU" << endl;
 					cout << "\t---------------------------------------" << endl;
-					cout << "\n\t1. Consultar preinscripciones" << endl;
+					cout << "\n\t1. Consultar actividades/eventos disponibles" << endl;
+					cout << "\t2. Consultar mis preinscripciones" << endl;
 					cout << "\t0. Salir" << endl;
 
 					cout << "\n\n\t¿Qué desea hacer?: ";
@@ -104,6 +106,7 @@ int main(int argc, char *argv[])
 							sql::Statement *query;
 							query = con->createStatement();//	1		2			3			4		5			6			7			8		9
 							res = query->executeQuery("SELECT titulo, descripcion, tematica, ubicacion, aforo, fecha_inicio, fecha_fin, duracion, precio FROM ACTIVIDAD WHERE estado = 'activa'");
+							delete query;
 
 							for(cont = 0; res->next(); cont++){
 								cout << "\n\t\tPRÓXIMOS EVENTOS\n" << endl
@@ -119,10 +122,17 @@ int main(int argc, char *argv[])
 
 							if(cont == 0)
 								cout << "\n\tNo hay actividades/eventos que mostrar" << endl;
+
+							//delete res;
 						}
 						break;
+
+						case '0':
+							cout << "\nHa escogido salir" << endl;
+							break;
+
 						default:
-							cout << "\nLa opción escogida no es válida" << endl;
+							cerr << "\nLa opción escogida no es válida" << endl;
 					}
 				}
 				break;
@@ -159,12 +169,13 @@ int main(int argc, char *argv[])
 							else
 								throw AppException("Error al crear una nueva actividad");
 
-							delete pst;
+							//delete pst;
 						}
 						break;
 
 						case '0':
-							cout << "\nHa escogido salir";
+							cout << "\nHa escogido salir" << endl;
+							break;
 
 						default:
 							cerr << "\nLa opción escogida no es válida" << endl;
@@ -174,6 +185,8 @@ int main(int argc, char *argv[])
 
 				case 'd':
 				{
+					//DirectorAcademico director(user);
+
 					cout << "\n\n\t---------------------------------------" << endl;
 					cout << "\t\t\tMENU" << endl;
 					cout << "\t---------------------------------------" << endl;
@@ -189,10 +202,13 @@ int main(int argc, char *argv[])
 						case '1':
 						{
 							uint16_t cont;
+							sql::PreparedStatement *query;
+
 							//										1		2			3			4		5			6			7			8		9	  10		11
-							pst = con->prepareStatement("SELECT titulo, descripcion, tematica, ubicacion, aforo, fecha_inicio, fecha_fin, duracion, precio, estado, id_actividad FROM ACTIVIDAD WHERE director = ?");
-							pst->setString(1, user.username());
-							res = pst->executeQuery();
+							query = con->prepareStatement("SELECT titulo, descripcion, tematica, ubicacion, aforo, fecha_inicio, fecha_fin, duracion, precio, estado, id_actividad FROM ACTIVIDAD WHERE director = ?");
+							query->setString(1, user.username());
+							res = query->executeQuery();
+							delete query;
 
 							for(cont = 0; res->next(); cont++){
 								cout << "\n\t\tEVENTOS ASIGNADOS\n" << endl
@@ -216,17 +232,59 @@ int main(int argc, char *argv[])
 						// Modificar eventos
 						case '2':
 						{
-							string id;
+							DirectorAcademico director;
+							char id[20];
 
 							cout << "\n\nIntroduce el identificador del evento a modificar: ";
 							std::cin >> id;
+							sql::PreparedStatement *query;
+							//										1			2			3		4		  5			6		7		8								10
+							query = con->prepareStatement("SELECT titulo, descripcion, tematica, ubicacion, aforo, duracion, precio, director FROM ACTIVIDAD WHERE id_actividad = ? AND director = ?");
 
+							query->setUInt(1, static_cast<uint32_t>(std::stoi(id)));
+							query->setString(2, user.username());
+							res = query->executeQuery();
 
+							if(res->next()){
+								Actividad actividad;
+
+								// Obtenemos la informacion almacenada de la actividad
+								actividad.setID(std::stoi(id));
+								actividad.setDirector(user.username());
+								actividad.setTitulo(res->getString(1));
+								actividad.setDescripcion(res->getString(2));
+								actividad.setTematica(res->getString(3));
+								actividad.setUbicacion(res->getString(4));
+								//actividad.setEstado(static_cast<ActividadStatus>(res->getString(5)));
+								actividad.setAforo(res->getInt(5));
+								actividad.setDuracionMinutos(res->getInt(6));
+								actividad.setPrecio(res->getDouble(7));
+								actividad.setDirector(res->getString(8));
+
+								director.modificarInfoActividad(actividad);
+
+								delete query;
+
+								// Modificamos la información de la actividad en la bd
+								query = con->prepareStatement("UPDATE ACTIVIDAD SET titulo = ?, descripcion = ?, tematica = ?, ubicacion = ?, aforo = ?, duracion = ?, precio = ?, director = ? WHERE id_actividad = ?");
+								query->setString(1, actividad.getTitulo());
+								query->setString(2, actividad.getDescripcion());
+								query->setString(3, actividad.getTematica());
+								query->setString(4, actividad.getUbicacion());
+								query->setInt(5, actividad.getAforo());
+								query->setInt(6, actividad.getDuracion());
+								query->setDouble(7, actividad.getPrecio());
+								query->setString(8, actividad.getDirector());
+								query->setUInt(9, static_cast<uint32_t>(std::stoi(id)));
+								query->executeUpdate();
+								delete query;
+							}
 						}
 						break;
 
 						case '0':
-							cout << "\nHa escogido salir";
+							cout << "\nHa escogido salir" << endl;
+							break;
 
 						default:
 							cerr << "\nLa opción escogida no es válida" << endl;
